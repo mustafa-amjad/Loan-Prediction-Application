@@ -132,7 +132,7 @@ with colA:
     st.dataframe(df.head(20) , use_container_width=True)
 
 with colB:
-    st.subheader('Model  Metrics (holdout test set)')
+    st.subheader('Model Metrics (holdout test set)')
 
     st.write({
         'Accuracy': round(metrics['accuracy'] , 4),
@@ -166,14 +166,14 @@ with c2:
     employment_type = st.selectbox('Employment Type', sorted(df['employment_type'].unique().tolist()))
     bank= st.selectbox('Bank' , sorted(df['bank'].unique().tolist()))
 with c3:
-    monthly_income_pkr = st.number_input('Monthly (PKR)' , min_value=1500 , max_value=500000 , value = 120000 , step = 5000)
+    monthly_income_pkr = st.number_input('Monthly Income (PKR)' , min_value=1500 , max_value=500000 , value = 120000 , step = 5000)
     credit_score = st.slider('Credit Score' , 300 , 900 , 680)
 with c4:
-    loan_amout_pkr = st.number_input('Loan Amout (PKR)' , min_value=50000 , max_value=3500000 , value=800000 , step = 5000)
+    loan_amount_pkr_input = st.number_input('Loan Amount (PKR)' , min_value=50000 , max_value=3500000 , value=800000 , step = 5000)
     loan_tenure_months = st.selectbox('Tenure (months)' , [6,12,24,36,48,60] , index = 3)
     existing_loans = st.selectbox('Existing Loans' , [0,1,2,3] , index= 0)
-    default_history = st.selectbox('Default History', [0,1],  format_func=lambda x:'No (0)' if x ==0 else 'yes (1)' , index=0)
-    has_credit_card = st.selectbox('Has Credit Card', [0,1],  format_func=lambda x:'No (0)' if x ==0 else 'yes (1)' , index=0)
+    default_history = st.selectbox('Default History', [0,1],  format_func=lambda x:'No (0)' if x ==0 else 'Yes (1)' , index=0)
+    has_credit_card = st.selectbox('Has Credit Card', [0,1],  format_func=lambda x:'No (0)' if x ==0 else 'Yes (1)' , index=0)
 
     ################################################################################
     ### Building model input rows
@@ -186,7 +186,7 @@ with c4:
         'bank': bank,
         'monthly_income_pkr': monthly_income_pkr,
         'credit_score': credit_score,
-        'loan_amount_pkr': loan_amout_pkr,
+        'loan_amount_pkr': loan_amount_pkr_input,
         'loan_tenure_months': loan_tenure_months,
         'existing_loans': existing_loans,
         'default_history': default_history,
@@ -206,11 +206,11 @@ if st.button('Predict Approval'):
     
 
     if pred ==1:
-        st.success(f'{applicant_name}: Approved (probablity : {prob : .2%})')
+        st.success(f'{applicant_name}: Approved (probability: {prob : .2%})')
         st.progress(int(prob * 100))
         st.write(f"Approval Probability: **{prob:.2%}**")
     else:
-        st.error(f'{applicant_name} : Rejected (Probablity : {prob :.2%})')
+        st.error(f'{applicant_name} : Rejected (probability: {prob :.2%})')
         st.write(f"Approval Probability: **{prob:.2%}**")
 
 

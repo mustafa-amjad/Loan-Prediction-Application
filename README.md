@@ -10,11 +10,22 @@ A Streamlit app that predicts whether a loan application will be approved, using
 - **Logistic Regression** classifier with a holdout test set
 - **Live metrics:** accuracy, precision, recall, F1 and the confusion matrix
 - **Interactive prediction form** that returns an approve/reject decision with its probability
-- Retrain with one click, or point the app at a different CSV
+- Browse the full dataset in the app
 
 ## Dataset
 
-`loan_dataset.csv` columns: gender, age, city, employment type, bank, monthly income (PKR), credit score, loan amount (PKR), loan tenure, existing loans, default history, has credit card. The target is `approved` (0/1).
+`data/loan_dataset.csv` (20,000 applications) columns: gender, age, city, employment type, bank, monthly income (PKR), credit score, loan amount (PKR), loan tenure, existing loans, default history, has credit card. The target is `approved` (0/1).
+
+## Project structure
+
+```
+Loan-Prediction-Application/
+├── app.py              # Streamlit UI: predict, model metrics, data
+├── loan/model.py       # training pipeline and prediction
+├── data/loan_dataset.csv
+├── .streamlit/config.toml
+└── requirements.txt
+```
 
 ## Tech stack
 
@@ -28,7 +39,7 @@ cd Loan-Prediction-Application
 python -m venv venv
 venv\Scripts\activate          # Windows  (macOS/Linux: source venv/bin/activate)
 pip install -r requirements.txt
-streamlit run loan_prediction.py
+streamlit run app.py
 ```
 
 ## Author

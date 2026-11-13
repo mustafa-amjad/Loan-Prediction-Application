@@ -1,5 +1,7 @@
 # Loan Approval Prediction
 
+**Live demo:** [loan-predictor-mustafa.streamlit.app](https://loan-predictor-mustafa.streamlit.app)
+
 A Streamlit app that predicts whether a loan application will be approved, using a scikit-learn pipeline trained on applicant data (income, credit score, loan amount, tenure, employment and more).
 
 > Built as a learning project, with Pakistani cities, banks and PKR amounts. Don't use it for real lending decisions.
